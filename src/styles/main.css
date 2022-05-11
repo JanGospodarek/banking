@@ -5,8 +5,20 @@
   font-family: "Lato", sans-serif;
   font-size: 18px;
 }
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
+  z-index: 100;
+  transition: all 0.5s;
+}
+
 .hidden {
-  display: none;
+  visibility: hidden;
   opacity: 0;
 }
 html {
@@ -53,7 +65,7 @@ input {
   width: 100vw;
   height: 100vh;
   display: grid;
-  grid-template-columns: 15% 70% 15%;
+  grid-template-columns: 12vw 76vw 12vw;
   grid-template-rows: 13% 87%;
   grid-gap: 0;
 }

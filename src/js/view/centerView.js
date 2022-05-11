@@ -25,16 +25,24 @@ class NewWallet extends View {
   btnCreate = document.querySelector(".btnCreateWallet");
   btnOpen = document.querySelector(".btnNewWallet");
   formCreate = document.querySelector(".newWalletForm");
+  window = document.querySelector(".newWallet");
+
+  constructor() {
+    super();
+    this.addHandlerShowWindow("btnNewWallet");
+    this.addHandlerHideWindow();
+  }
   createWalletHandler(handler) {
-    this.formCreate.addEventListener("submit", function (e) {
+    this.formCreate.addEventListener("submit", (e) => {
       e.preventDefault();
-      console.log(this);
       const exitData = {
         walletName: document.querySelector(".nameWallet").value,
         describtion: document.querySelector(".walletDescribtion").value,
       };
-      console.log(exitData);
+      document.querySelector(".nameWallet").value = "";
+      document.querySelector(".walletDescribtion").value = "";
       handler(exitData);
+      this.toggleWindow();
     });
   }
 
@@ -53,9 +61,22 @@ class NewWallet extends View {
                 </p>
                 <p>
                 
-               </div>`;
+               </div>
+               `;
     });
+
     return markup;
+  }
+  renderBtn() {
+    this.parentElement.insertAdjacentHTML(
+      "beforeend",
+      `
+    <div class="btnContainer">
+              <button class="btnNewWallet btn" data-modal="newWallet">
+              <img src="src/img/iconPLus.png" alt="new wallet" width="37">
+              </button>
+            </div>`
+    );
   }
 }
 export const balanceView = new BalanceView();

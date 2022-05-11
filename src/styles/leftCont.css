@@ -2,7 +2,7 @@
 .history {
   grid-column: 1;
   height: 100%;
-  width: auto;
+  /* width: 10vw; */
 }
 .historyList {
   display: flex;

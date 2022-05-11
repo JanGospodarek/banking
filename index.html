@@ -143,7 +143,8 @@
       </div>
       
     </div>
-   
+    <div class="overlay hidden"></div>
+
 <!--
     <div class="quickTransferWindow modal">
       <h2>Quick transfer</h2>
@@ -253,13 +254,14 @@
     </div>
     
   -->
+
   <div class="newWallet modal hidden">
     <h2>Create new wallet</h2>
     <form class="newWalletForm" >
       <label>Wallet name</label>
-      <input type="text" class="nameWallet">
+      <input type="text" class="nameWallet" required>
       <label>Describtion</label>
-      <input type="text" class="walletDescribtion">
+      <input type="text" class="walletDescribtion" required>
       <input type="submit" value="Create" class="btnCreateWallet">
     </form>
   </div>
