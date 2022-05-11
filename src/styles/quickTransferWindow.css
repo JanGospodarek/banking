@@ -1,0 +1,23 @@
+.quickTransferWindow {
+  background-color: white;
+  border-radius: 10px;
+  width: 350px;
+  height: 500px;
+}
+.quickTransferForm {
+  padding: 7px;
+  display: grid;
+  grid-gap: 7px;
+  grid-template-rows: repeat(15%, 11);
+  justify-items: auto;
+}
+
+.quickTransferForm > input {
+  width: 250px;
+}
+.sendCont {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}

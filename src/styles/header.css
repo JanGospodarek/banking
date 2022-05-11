@@ -1,0 +1,28 @@
+/**HEADER**/
+.header {
+  position: relative;
+  grid-row: 1;
+  grid-column: 1/-1;
+}
+.hiMsg {
+  position: absolute;
+  font-size: 40px;
+  left: 10px;
+  top: 30px;
+}
+.account,
+.logout {
+  position: absolute;
+  background-color: #e6e6e6;
+  border-radius: 5px;
+  height: 50px;
+  width: 50px;
+  top: 40px;
+  right: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.logout {
+  right: 20px;
+}

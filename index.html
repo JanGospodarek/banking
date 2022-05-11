@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="src/styles/main.css" />
+    <link rel="stylesheet" href="src/styles/logWindow.css" />
+    <link rel="stylesheet" href="src/styles/rightCont.css" />
+    <link rel="stylesheet" href="src/styles/leftCont.css" />
+    <link rel="stylesheet" href="src/styles/centerCont.css" />
+    <link rel="stylesheet" href="src/styles/header.css" />
+    <link rel="stylesheet" href="src/styles/quickTransferWindow.css" />
+    <link rel="stylesheet" href="src/styles/walletManager.css" />
+    <link rel="stylesheet" href="src/styles/warningMsg.css" />
+    <link rel="stylesheet" href="src/styles/contactsCont.css" />
+    <script type="module" src="src/js/controller.js"></script>
+  </head>
+  <body>
+    <!--
+    <div class="logo"></div>
+
+    <div class="logWindow">
+      <h2>Welcome!</h2>
+      <p>Do you have an account?</p>
+      <button class="logButtons btnLogIn">Log in</button>
+      <p>Or are you new?</p>
+      <button class="logButtons btnRegister">Register</button>
+    </div>
+  
+    <div class="logWindow logWindowBig">
+      <form class="regWindowForm">
+        <h2>How simple is that!</h2>
+        <label>Your name</label>
+        <input type="text" class ="name"/>
+        <label>Your email</label>
+        <input type="email" placeholder="example@domain.com" class ="email" />
+        <label>Your password</label>
+        <input type="password" placeholder=" min 8 characters" class ="password"/>
+        <label>Confirm password</label>
+        <input type="passwords" class ="passwordCheck" />
+        <input class="submit" type="submit" value="Register"  />
+      </form>
+
+      <form class="logWindowForm">
+        <h2>Welcome back!</h2>
+        <label>Your email</label>
+        <input type="email" placeholder="example@domain.com" class ="email" />
+        <label>Your password</label>
+        <input type="password" placeholder=" min 8 characters" class ="password" />
+        <input class="submit" type="submit" value="Register"  />
+      </form>
+    </div>
+-->
+    <!-- <div class="overlay"></div>-->
+    
+    <div class="mainCont">
+      <div class="header">
+        <p class="hiMsg">Hi, Jan Gospodarek</p>
+        <button class="account">
+          <img src="src/img/account.png" alt="account" width="45">
+        </button>
+        <button class="logout">
+          <img src="src/img/logout.png" alt="logout" width="55">
+        </button>
+      </div>
+      <div class="history ">
+        <ul class="historyList">
+          <!--
+          <li class="entry plus">
+             <p><span class="category">Title</span> grocery</p>
+            <p><span class="category">Amount</span> 500$</p>
+            <p><span class="category">From</span> example@domain.com</p>
+            <p><span class="category">Wallet</span> expo</p>
+            <p><span class="category">Balance</span> 7400.33$</p>
+            <p><span class="category">Date</span> 2004.10.11</p>
+          </li>
+          <li class="entry minus">
+                         <p><span class="category">Title</span> grocery</p>
+
+            <p><span class="category">Amount</span> 500$</p>
+            <p><span class="category">To</span> example@domain.com</p>
+            <p><span class="category">Wallet</span> expo</p>
+            <p><span class="category">Balance</span> 7400.33$</p>
+                        <p><span class="category">Date</span> 2004.10.11</p>
+
+          </li>-->
+        </ul>
+      </div>
+      <div class="centerCont">
+          <div class="top">
+          <div class=" balanceCont">
+            <p>Total balance</p>
+            <p class="balance">7400.00$</p>
+          </div>
+          <div class="mainWallet">
+            <p class="walletName">
+                <span class="boldWalletName">Main wallet</span> 
+              </p>
+              <p><span class="category">Balance</span> 500$</p>
+              <p>
+                <span class="category">Describtion</span> Default wallet
+              </p>
+             
+          </div>
+        </div>
+        <div class="walletCont">
+          <h2>Wallets</h2>
+          <div class="wallets">
+           <!-- <div class="wallet">
+              <p class="walletName">
+                <span class="category">Wallet ID</span> expo
+              </p>
+              <p><span class="category">Balance</span> 500$</p>
+              <p>
+                <span class="category">Describtion</span> Online shopping
+              </p>
+              <p>
+                <span class="category">Date of establiching</span> 2003.13.11
+              </p>
+             </div>-->
+            
+            <div class="btnContainer">
+              <button class="btnNewWallet btn" data-modal="newWallet">
+              <img src="src/img/iconPLus.png" alt="new wallet" width="37">
+              </button>
+            </div>
+            
+          </div>
+          
+        </div>
+    </div>
+    <div class="rightCont">
+      <ul class="functionsList">
+        <li class="function"><button class="btnFunct btnQuickTransfer">Quick transfer</button> </li>
+        <li class="function"><button class="btnFunct btnManageWallets">Wallet manager</button> </li>
+        <!-- <li class="function"><button class="btnFunct btnHistory">History</button> </li> -->
+        <li class="function"><button class="btnFunct btnContacts">Contacts</button> </li>
+
+      </ul>
+    </div>
+      </div>
+      
+    </div>
+   
+<!--
+    <div class="quickTransferWindow modal">
+      <h2>Quick transfer</h2>
+      <form class="quickTransferForm">
+        <label>Title</label>
+        <input type="text" class="title" />
+        <label>Decribtion</label>
+        <input type="text" class="describtion" />
+        <label>From wallet</label>
+        <input list="walletsList" name="wallet" class="walletID" />
+        <datalist id="walletsList">
+          <option value="Main Wallet"></option>
+          <option value="Wallet 1"></option>
+          <option value="wallet 2"></option>
+        </datalist>
+
+        <label>To</label>
+        <input list="contactsList" name="receiver" class="receiver" />
+        <datalist id="contactsList">
+          <option value="asia"></option>
+          <option value="stefan"></option>
+          <option value="ribert"></option>
+        </datalist>
+        <label>Amount (in $)</label>
+        <input type="number" class="amount" />
+        <div class="sendCont">
+          <input type="submit" value="Send" class="submit" />
+        </div>
+      </form>
+    </div>
+
+    
+    <div class="manageWalletsWindow modal">
+      <h2>Wallet manager</h2>
+      <div class="walletManager">
+        <div class="walletOnManage">
+          <p class="walletName">Wallet 1</p>
+          <p><span class="category">Describtion</span> grocery</p>
+          <p><span class="category">Balance</span> 500$</p>
+          <p><span class="category">History</span></p>
+          <div class="history">
+            <div class="historyListManager">
+              <div class="entryManager plus">
+                <p><span class="category">Title</span> grocery</p>
+                <p><span class="category">Amount</span> 500$</p>
+                <p><span class="category">From</span> example@domain.com</p>
+                <p><span class="category">Wallet</span> expo</p>
+                <p><span class="category">Balance</span> 7400.33$</p>
+                <p><span class="category">Date</span> 2004.10.11</p>
+              </div>
+              <div class="entryManager minus">
+                <p><span class="category">Title</span> grocery</p>
+                <p><span class="category">Amount</span> 500$</p>
+                <p><span class="category">To</span> example@domain.com</p>
+                <p><span class="category">Wallet</span> expo</p>
+                <p><span class="category">Balance</span> 7400.33$</p>
+                <p><span class="category">Date</span> 2004.10.11</p>
+              </div>
+            </div>
+          </div>
+          <div class="btnActionCont">
+            <button class="btnWalletManager btnTransferWallet">
+              Transfer to other wallet
+            </button>
+            <button class="btnWalletManager btnDeleteWallet">
+              Delete wallet
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="warningMsg modal">
+      <h2>Are you sure?</h2>
+      <p class="category">
+        Money from this wallet will be transfered to Main wallet
+      </p>
+      <div class="warningMsgContbtn">
+        <button class="btnNo">No</button>
+        <button class="btnYes">Yes</button>
+      </div>
+    </div>
+        
+    <div class="contactsCont modal">
+      <h2>Contacts</h2>
+      <div class="contacts">
+        <div class="contact">
+          <img
+            src="src/img/contact.png"
+            alt="contact"
+            class="contactImg"
+            width="120"
+          />
+          <div class="contactInfo">
+            <p><span class="category">Name</span> Stefan</p>
+            <p><span class="category">Describtion</span> gosc tamtem</p>
+            <p><span class="category">Email</span> stefan@domain.com</p>
+          </div>
+          <button class="btnDeleteContact">
+            <img src="src/img/trash.png" alt="" width="25" />
+          </button>
+        </div>
+
+        <button class="btnNewContact">
+          <img src="src/img/iconPlus.png" alt="new wallet" width="35" />
+        </button>
+      </div>
+    </div>
+    
+  -->
+  <div class="newWallet modal hidden">
+    <h2>Create new wallet</h2>
+    <form class="newWalletForm" >
+      <label>Wallet name</label>
+      <input type="text" class="nameWallet">
+      <label>Describtion</label>
+      <input type="text" class="walletDescribtion">
+      <input type="submit" value="Create" class="btnCreateWallet">
+    </form>
+  </div>
+</body>
+</html>

@@ -1,0 +1,22 @@
+.warningMsg {
+  background-color: white;
+  width: 250px;
+  height: 150px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.warningMsg > p {
+  text-align: center;
+}
+.warningMsgContbtn {
+  margin-top: 5px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+.warningMsgContbtn > button {
+  padding: 10px;
+}

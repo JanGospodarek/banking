@@ -1,0 +1,23 @@
+.rightCont {
+  grid-column: 3;
+  padding: 5px;
+}
+.functionsList {
+  list-style: none;
+}
+.function {
+  padding: 2px;
+  border-bottom: 2px solid lightgrey;
+  transition: all 0.3s;
+}
+.btnFunct {
+  background-color: white;
+  border: none;
+  transition: all 0.3s;
+}
+.function:hover {
+  border-bottom: 2px solid grey;
+}
+.btnFunct:hover {
+  background-color: rgb(213, 210, 210);
+}
