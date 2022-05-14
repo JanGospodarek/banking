@@ -5,6 +5,7 @@ import { mainWallet } from "./view/centerView.js";
 import { history } from "./view/leftView.js";
 import { newWallet } from "./view/centerView.js";
 import { View } from "./view/View.js";
+import { walletManager } from "./view/walletManagerView.js";
 function init() {
   model.calculateTotalBalance();
   balanceView.renderSimply(`${model.state.totalBalance} $`);
@@ -12,7 +13,7 @@ function init() {
   mainWallet.render(model.state);
   newWallet.render(model.state, false);
   history.render(model.state.movements);
-  // newWallet.openModal("btnNewWallet");
+  walletManager.render(model.state);
 }
 init();
 
@@ -21,13 +22,11 @@ function controlCreateWallet(data) {
   newWallet.render(model.state);
   newWallet.renderBtn();
   newWallet.addHandlerShowWindow("btnNewWallet");
-  // newWallet.openModal("btnNewWallet");
-  // newWallet.update(model.state);
-  // newWallet.closeModal();
+  walletManager.render(model.state);
+  console.log(model.state);
 }
 
 function initHandlers() {
   newWallet.createWalletHandler(controlCreateWallet);
-  // newWallet.closeModal("newWallet");
 }
 initHandlers();

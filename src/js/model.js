@@ -4,6 +4,7 @@ export class User {
       walletName: "Main wallet",
       balance: 1000,
       describtion: "Default wallet",
+      movements: [],
     },
   ];
   totalBalance = 0;
@@ -55,6 +56,7 @@ export function createNewWallet(data) {
     walletName: data.walletName,
     balance: 0,
     describtion: data.describtion,
+    movements: [],
   });
   console.log(curUser.wallets);
 }

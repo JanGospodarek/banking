@@ -42,7 +42,7 @@ class NewWallet extends View {
       document.querySelector(".nameWallet").value = "";
       document.querySelector(".walletDescribtion").value = "";
       handler(exitData);
-      this.toggleWindow();
+      this.hideWindow();
     });
   }
 
