@@ -25,7 +25,7 @@ class WalletManager extends View {
               <p><span class="category">History</span></p>
               <div class="history">
                 <ul class="historyListManager">
-                ${renderHistoryEntry(this.data.wallets)}
+                ${renderHistoryEntry(entry)}
                  
                 </ul>
               </div>
