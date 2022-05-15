@@ -17,16 +17,22 @@ function init() {
 }
 init();
 
-function controlCreateWallet(data) {
-  model.createNewWallet(data);
+function controlCreateWallet(data, newWalletBool = true) {
+  if (newWalletBool) model.createNewWallet(data);
   newWallet.render(model.state);
   newWallet.renderBtn();
   newWallet.addHandlerShowWindow("btnNewWallet");
   walletManager.render(model.state);
-  console.log(model.state);
+  // console.log(model.state);
 }
-
+function controlDeleteWalletManage() {
+  const name = walletManager.addHandlerDeleteWallet(undefined, false);
+  model.deleteWalletManage(name);
+  walletManager.render(model.state);
+  controlCreateWallet(undefined, false);
+}
 function initHandlers() {
   newWallet.createWalletHandler(controlCreateWallet);
+  walletManager.addHandlerDeleteWallet(controlDeleteWalletManage);
 }
 initHandlers();

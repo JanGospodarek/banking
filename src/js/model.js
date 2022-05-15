@@ -60,3 +60,9 @@ export function createNewWallet(data) {
   });
   console.log(curUser.wallets);
 }
+export function deleteWalletManage(name) {
+  const index = curUser.wallets.findIndex(
+    (wallet) => wallet.walletName === name
+  );
+  curUser.wallets.splice(index, 1);
+}

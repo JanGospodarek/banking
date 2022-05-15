@@ -18,3 +18,8 @@ export function renderHistoryEntry(data) {
 
   return markup;
 }
+export function renderDeleteBtn(entry) {
+  if (entry.walletName !== "Main wallet") {
+    return '<button class="btnWalletManager btnDeleteWallet">Delete wallet</button>';
+  } else return "";
+}
