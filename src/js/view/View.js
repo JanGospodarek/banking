@@ -13,17 +13,12 @@ export class View {
 
   addHandlerShowWindow(query) {
     this.btnOpen = document.querySelector(`.${query}`);
-    this.btnOpen.addEventListener("click", this.toggleWindow.bind(this));
+    this.btnOpen.addEventListener("click", this.showWindow.bind(this));
   }
 
   addHandlerHideWindow() {
-    this.overlay.addEventListener("click", this.toggleWindow.bind(this));
+    this.overlay.addEventListener("click", this.hideWindow.bind(this));
   }
-  toggleWindow() {
-    this.overlay.classList.toggle("hidden");
-    this.window.classList.toggle("hidden");
-  }
-
   render(data, clear = true) {
     if (clear) this.parentElement.innerHTML = "";
     this.data = data;

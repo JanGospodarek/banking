@@ -5,6 +5,7 @@ import { mainWallet } from "./view/centerView.js";
 import { history } from "./view/leftView.js";
 import { newWallet } from "./view/centerView.js";
 function init() {
+  log;
   model.calculateTotalBalance();
   balanceView.renderSimply(`${model.state.totalBalance} $`);
   nameView.renderSimply(`Hi ${model.state.name}`);
@@ -12,7 +13,6 @@ function init() {
   newWallet.render(model.state, false);
   history.render(model.state.movements);
 }
-init();
 
 function controlCreateWallet(data) {
   model.createNewWallet(data);
@@ -22,6 +22,7 @@ function controlCreateWallet(data) {
 }
 
 function initHandlers() {
+  window.addEventListener("load", init);
   newWallet.createWalletHandler(controlCreateWallet);
 }
 initHandlers();
