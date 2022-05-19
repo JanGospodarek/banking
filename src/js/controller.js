@@ -5,6 +5,7 @@ import { mainWallet } from "./view/centerView.js";
 import { history } from "./view/leftView.js";
 import { newWallet } from "./view/centerView.js";
 import { View } from "./view/View.js";
+import { logOrRegView } from "./view/logView.js";
 import { walletManager } from "./view/walletManagerView.js";
 function init() {
   model.calculateTotalBalance();
@@ -34,5 +35,6 @@ function controlDeleteWalletManage() {
 function initHandlers() {
   newWallet.createWalletHandler(controlCreateWallet);
   walletManager.addHandlerDeleteWallet(controlDeleteWalletManage);
+  logOrRegView.btnOpenLogForm();
 }
 initHandlers();

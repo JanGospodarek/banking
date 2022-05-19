@@ -27,6 +27,7 @@ export class View {
   showWindow() {
     this.overlay.classList.remove("hidden");
     this.window.classList.remove("hidden");
+    console.log(this.window);
   }
   hideWindow() {
     this.overlay.classList.add("hidden");
