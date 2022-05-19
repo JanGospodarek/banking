@@ -1,5 +1,6 @@
 import { View } from "./View";
-import { iconPlus } from "url:../../img/iconPLus.png";
+import iconPlus from "../../img/iconPlus.png";
+console.log(iconPlus);
 class BalanceView extends View {
   parentElement = document.querySelector(".balance");
 }
@@ -73,7 +74,7 @@ class NewWallet extends View {
       `
     <div class="btnContainer">
               <button class="btnNewWallet btn" data-modal="newWallet">
-              <img src="src/img/iconPLus.png" alt="new wallet" width="37">
+              <img src="${iconPlus}" alt="new wallet" width="37">
               </button>
             </div>`
     );

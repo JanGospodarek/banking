@@ -1,3 +1,4 @@
+import { registerView } from "./view/logView";
 export class User {
   wallets = [
     {
