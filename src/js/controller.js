@@ -32,7 +32,11 @@ function controlDeleteWalletManage() {
   walletManager.render(model.state);
   controlCreateWallet(undefined, false);
 }
-function controlLogIn(data) {}
+function controlLogIn(data) {
+  model.logInUser(data.email, data.password);
+  console.log(model.state);
+  init();
+}
 function initHandlers() {
   newWallet.createWalletHandler(controlCreateWallet);
   walletManager.addHandlerDeleteWallet(controlDeleteWalletManage);

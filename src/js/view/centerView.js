@@ -10,6 +10,7 @@ class NameView extends View {
 class MainWallet extends View {
   parentElement = document.querySelector(".mainWallet");
   generateMarkup() {
+    console.log(this.data);
     return `
     <p class="walletName">
     <span class="boldWalletName">${this.data.wallets[0].walletName}</span> 

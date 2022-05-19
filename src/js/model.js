@@ -28,27 +28,79 @@ export class User {
     });
   }
 }
-
-const curUser = new User("Jan Gospodarek", "jan.gospo@onet.pl", "zaq1@WSX");
-curUser.generateMovement({
-  type: "plus",
-  title: "wydatek",
-  amount: 100,
-  from: "example.pl",
-  wallet: "main wallet",
-  totalBalance: "1000",
-  date: "edeef",
-});
-export const state = {
-  users: [],
-  wallets: curUser.wallets,
-  name: curUser.name,
-  email: curUser.email,
-  totalBalance: curUser.totalBalance,
-  password: curUser.password,
-  movements: curUser.movements,
-  contacts: curUser.movements,
+// let curUser;
+// if (curUser === undefined) {
+//   curUser = new User(undefined, undefined, undefined);
+// }
+export let state = {
+  users: [
+    {
+      name: "Robert Kowalski",
+      email: "robert@kowalski.com",
+      password: "zaq1@WSX1",
+      movements: [],
+      contacts: [],
+      totalBalance: 100,
+    },
+    {
+      name: "Ela Nowak",
+      email: "ela@nowak.com",
+      password: "zaq1@WSX",
+      wallets: [
+        {
+          walletName: "Main wallet",
+          balance: 1000,
+          describtion: "Default wallet",
+          movements: [],
+        },
+      ],
+      movements: [],
+      contacts: [],
+      totalBalance: 300,
+    },
+  ],
+  wallets: [
+    {
+      walletName: "",
+      balance: 0,
+      describtion: "",
+      movements: [],
+    },
+  ],
+  name: "",
+  email: "",
+  totalBalance: 0,
+  password: "",
+  movements: [],
+  contacts: [],
 };
+let userIndex;
+export function logInUser(email, password) {
+  userIndex = state.users.findIndex((user) => user.email === email);
+  if (state.users[userIndex].password !== password) return;
+  let curUser = state.users[userIndex];
+
+  state.wallets = curUser.wallets;
+  state.name = curUser.name;
+  state.email = curUser.email;
+  state.totalBalance = curUser.totalBalance;
+  state.password = curUser.password;
+  state.movements = curUser.movements;
+  state.contacts = curUser.contacts;
+}
+// export let curUser = new User();
+
+// curUser.generateMovement({
+//   type: "plus",
+//   title: "wydatek",
+//   amount: 100,
+//   from: "example.pl",
+//   wallet: "main wallet",
+//   totalBalance: "1000",
+//   date: "edeef",
+// });
+console.log(state);
+// state.users.push;
 export function calculateTotalBalance() {
   state.wallets.forEach((wallet) => (state.totalBalance += wallet.balance));
 }
