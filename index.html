@@ -20,10 +20,10 @@
   <body>
     <div class="overlay hidden"></div>
 
-    <div class="logging hidden">
-      <!-- <div class="logo"></div> -->
-      <!--log window cos psuje-->
-      <div class="logWindow logWindowLogOrReg">
+    <!--<div class="logging hidden">
+    
+    
+      <div class="logWindowModal logWindowLogOrReg">
         <h2>Welcome!</h2>
         <p>Do you have an account?</p>
         <button class="logButtons btnLogIn" id="btnLogIn">Log in</button>
@@ -31,7 +31,7 @@
         <button class="logButtons btnRegister">Register</button>
       </div>
     
-      <div class="logWindow logWindowBig modal hidden">
+      <div class=" logWindowBig modal hidden">
         <form class="regWindowForm hidden">
           <h2>How simple is that!</h2>
           <label>Your name</label>
@@ -57,12 +57,17 @@
       </div>
     </div>
     
-
+  -->
     <!-- <div class="overlay"></div>-->
     
     <div class="mainCont">
       <div class="header">
         <p class="hiMsg">Hi, Jan Gospodarek</p>
+        <form class="logIn">
+          <input class="emailLogIn" type="text" placeholder="example@domain.com">
+          <input class="passwordLogIn" type="text" placeholder="min 8 characters">
+          <input class="submit logSubmit" type="submit">
+        </form>
         <button class="account">
           <img src="src/img/account.png" alt="account" width="45">
         </button>

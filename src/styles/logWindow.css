@@ -20,7 +20,7 @@
   height: 260px;
   margin-bottom: 50px;
 }
-.logWindow {
+.logWindowModal {
   margin: 0 auto;
   display: grid;
   grid-template-rows: repeat(20%, 4);
@@ -28,14 +28,12 @@
   background-color: white;
   border-radius: 5px;
   width: 350px;
-  height: 300px;
+  height: 400px;
   justify-items: center;
   align-items: center;
   padding: 10px;
 }
-.logWindowBig {
-  height: 400px;
-}
+
 .regWindowForm {
   height: 350px;
   display: grid;

@@ -26,3 +26,14 @@
 .logout {
   right: 20px;
 }
+.logIn {
+  position: absolute;
+  top: 40px;
+  right: 200px;
+}
+.logIn > input {
+  width: 180px;
+}
+.logIn > .submit {
+  width: 100px;
+}
