@@ -18,40 +18,42 @@
     <script type="module" src="src/js/controller.js"></script>
   </head>
   <body>
+    <div class="logging hidden">
+      <div class="logo"></div>
+
+      <div class="logWindow">
+        <h2>Welcome!</h2>
+        <p>Do you have an account?</p>
+        <button class="logButtons btnLogIn">Log in</button>
+        <p>Or are you new?</p>
+        <button class="logButtons btnRegister">Register</button>
+      </div>
     
-    <div class="logo"></div>
-
-    <div class="logWindow">
-      <h2>Welcome!</h2>
-      <p>Do you have an account?</p>
-      <button class="logButtons btnLogIn">Log in</button>
-      <p>Or are you new?</p>
-      <button class="logButtons btnRegister">Register</button>
-    </div>
+      <div class="logWindow logWindowBig">
+        <form class="regWindowForm">
+          <h2>How simple is that!</h2>
+          <label>Your name</label>
+          <input type="text" class ="name"/>
+          <label>Your email</label>
+          <input type="email" placeholder="example@domain.com" class ="email" />
+          <label>Your password</label>
+          <input type="password" placeholder=" min 8 characters" class ="password"/>
+          <label>Confirm password</label>
+          <input type="passwords" class ="passwordCheck" />
+          <input class="submit" type="submit" value="Register"  />
+        </form>
   
-    <div class="logWindow logWindowBig">
-      <form class="regWindowForm">
-        <h2>How simple is that!</h2>
-        <label>Your name</label>
-        <input type="text" class ="name"/>
-        <label>Your email</label>
-        <input type="email" placeholder="example@domain.com" class ="email" />
-        <label>Your password</label>
-        <input type="password" placeholder=" min 8 characters" class ="password"/>
-        <label>Confirm password</label>
-        <input type="passwords" class ="passwordCheck" />
-        <input class="submit" type="submit" value="Register"  />
-      </form>
-
-      <form class="logWindowForm">
-        <h2>Welcome back!</h2>
-        <label>Your email</label>
-        <input type="email" placeholder="example@domain.com" class ="email" />
-        <label>Your password</label>
-        <input type="password" placeholder=" min 8 characters" class ="password" />
-        <input class="submit" type="submit" value="Register"  />
-      </form>
+        <form class="logWindowForm">
+          <h2>Welcome back!</h2>
+          <label>Your email</label>
+          <input type="email" placeholder="example@domain.com" class ="email" />
+          <label>Your password</label>
+          <input type="password" placeholder=" min 8 characters" class ="password" />
+          <input class="submit" type="submit" value="Register"  />
+        </form>
+      </div>
     </div>
+    
 
     <!-- <div class="overlay"></div>-->
     
@@ -176,8 +178,8 @@
       </form>
     </div>
 
-    
-    <div class="manageWalletsWindow modal">
+  -->
+    <div class="manageWalletsWindow modal hidden">
       <h2>Wallet manager</h2>
       <div class="walletManager">
         <div class="walletOnManage">
@@ -216,7 +218,7 @@
         </div>
       </div>
     </div>
-    <div class="warningMsg modal">
+    <div class="warningMsg modal hidden">
       <h2>Are you sure?</h2>
       <p class="category">
         Money from this wallet will be transfered to Main wallet
@@ -226,7 +228,7 @@
         <button class="btnYes">Yes</button>
       </div>
     </div>
-        
+     <!--  
     <div class="contactsCont modal">
       <h2>Contacts</h2>
       <div class="contacts">

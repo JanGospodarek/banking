@@ -27,7 +27,6 @@ class NewWallet extends View {
   btnOpen = document.querySelector(".btnNewWallet");
   formCreate = document.querySelector(".newWalletForm");
   window = document.querySelector(".newWallet");
-
   constructor() {
     super();
     this.addHandlerShowWindow("btnNewWallet");
