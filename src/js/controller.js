@@ -4,25 +4,35 @@ import { nameView } from "./view/centerView.js";
 import { mainWallet } from "./view/centerView.js";
 import { history } from "./view/leftView.js";
 import { newWallet } from "./view/centerView.js";
+import { View } from "./view/View.js";
+import { walletManager } from "./view/walletManagerView.js";
 function init() {
-  log;
   model.calculateTotalBalance();
   balanceView.renderSimply(`${model.state.totalBalance} $`);
   nameView.renderSimply(`Hi ${model.state.name}`);
   mainWallet.render(model.state);
   newWallet.render(model.state, false);
   history.render(model.state.movements);
+  walletManager.render(model.state);
 }
+init();
 
-function controlCreateWallet(data) {
-  model.createNewWallet(data);
+function controlCreateWallet(data, newWalletBool = true) {
+  if (newWalletBool) model.createNewWallet(data);
   newWallet.render(model.state);
   newWallet.renderBtn();
   newWallet.addHandlerShowWindow("btnNewWallet");
+  walletManager.render(model.state);
+  // console.log(model.state);
 }
-
+function controlDeleteWalletManage() {
+  const name = walletManager.addHandlerDeleteWallet(undefined, false);
+  model.deleteWalletManage(name);
+  walletManager.render(model.state);
+  controlCreateWallet(undefined, false);
+}
 function initHandlers() {
-  window.addEventListener("load", init);
   newWallet.createWalletHandler(controlCreateWallet);
+  walletManager.addHandlerDeleteWallet(controlDeleteWalletManage);
 }
 initHandlers();

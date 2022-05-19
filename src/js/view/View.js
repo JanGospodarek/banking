@@ -19,11 +19,25 @@ export class View {
   addHandlerHideWindow() {
     this.overlay.addEventListener("click", this.hideWindow.bind(this));
   }
+  //Funtion toggleWindow is cause of problems with multiple event listeners
+  // toggleWindow() {
+  //   this.overlay.classList.toggle("hidden");
+  //   this.window.classList.toggle("hidden");
+  // }
+  showWindow() {
+    this.overlay.classList.remove("hidden");
+    this.window.classList.remove("hidden");
+  }
+  hideWindow() {
+    this.overlay.classList.add("hidden");
+    this.window.classList.add("hidden");
+  }
   render(data, clear = true) {
     if (clear) this.parentElement.innerHTML = "";
     this.data = data;
     const markup = this.generateMarkup();
     this.parentElement.insertAdjacentHTML("afterbegin", markup);
   }
+
   generateMarkup() {}
 }
