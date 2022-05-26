@@ -75,10 +75,11 @@ export let state = {
   contacts: [],
 };
 let userIndex;
+let curUser;
 export function logInUser(email, password) {
   userIndex = state.users.findIndex((user) => user.email === email);
   if (state.users[userIndex].password !== password) return;
-  let curUser = state.users[userIndex];
+  curUser = state.users[userIndex];
 
   state.wallets = curUser.wallets;
   state.name = curUser.name;
@@ -88,30 +89,20 @@ export function logInUser(email, password) {
   state.movements = curUser.movements;
   state.contacts = curUser.contacts;
 }
-// export let curUser = new User();
 
-// curUser.generateMovement({
-//   type: "plus",
-//   title: "wydatek",
-//   amount: 100,
-//   from: "example.pl",
-//   wallet: "main wallet",
-//   totalBalance: "1000",
-//   date: "edeef",
-// });
-console.log(state);
 // state.users.push;
 export function calculateTotalBalance() {
   state.wallets.forEach((wallet) => (state.totalBalance += wallet.balance));
 }
+
 export function createNewWallet(data) {
+  // console.log(curUser);
   curUser.wallets.push({
     walletName: data.walletName,
     balance: 0,
     describtion: data.describtion,
     movements: [],
   });
-  console.log(curUser.wallets);
 }
 export function deleteWalletManage(name) {
   const index = curUser.wallets.findIndex(

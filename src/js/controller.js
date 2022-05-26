@@ -17,7 +17,7 @@ function init() {
   walletManager.render(model.state);
 }
 init();
-
+let curWalletName;
 function controlCreateWallet(data, newWalletBool = true) {
   if (newWalletBool) model.createNewWallet(data);
   newWallet.render(model.state);
@@ -37,10 +37,12 @@ function controlLogIn(data) {
   console.log(model.state);
   init();
 }
+function controlTransferToWallet() {}
 function initHandlers() {
   newWallet.createWalletHandler(controlCreateWallet);
   walletManager.addHandlerDeleteWallet(controlDeleteWalletManage);
   logView.logInHandler(controlLogIn);
-  // logOrRegView.btnOpenLogForm();
+  walletManager.addHandlerOpenTransferModal();
 }
 initHandlers();
+console.log(curWalletName);
