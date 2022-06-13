@@ -9,6 +9,7 @@ class WalletManager extends View {
   // btnTransfer = document.querySelectorAll(".btnTransferWallet");
   transferWindow = document.querySelector(".TransferToWallet");
   // btnsDelete = document.querySelectorAll(".btnDeleteWallet");
+  name;
   constructor() {
     super();
     this.addHandlerShowWindow("btnManageWallets");
@@ -56,30 +57,31 @@ class WalletManager extends View {
     return name;
   }
   addHandlerOpenTransferModal() {
-    let name;
     this.window.addEventListener("click", (e) => {
       const btnTransfer = e.target.closest(".btnTransferWallet");
       if (e.target !== btnTransfer) return;
       console.log(this.transferWindow);
       this.transferWindow.classList.remove("hidden");
-      name = e.target.closest(".walletOnManage").dataset.name;
-      console.log(name);
+      this.name = e.target.closest(".walletOnManage").dataset.name;
     });
-    return name;
   }
 
-  transferToWallet() {
-    //dokończyć!
-    // let name;
-    // this.window.addEventListener("click", (e) => {
-    //   const transferForm = e.target.closest(".btnTransferWallet");
-    //   if (e.target !== btnTransfer) return;
-    //   console.log(this.transferWindow);
-    //   this.transferWindow.classList.remove("hidden");
-    //   name = e.target.closest(".walletOnManage").dataset.name;
-    //   console.log(name);
-    // });
-    // return name;
+  TransferToWallet(handler) {
+    document
+      .querySelector(".TransferToWalletForm")
+      .addEventListener("submit", (e) => {
+        e.preventDefault();
+        const exitData = {
+          destWalletName: document.querySelector(".destNameWallet").value,
+          amount: Number(document.querySelector(".amount").value),
+        };
+        document.querySelector(".destNameWallet").value = "";
+        document.querySelector(".amount").value = "";
+        this.transferWindow.classList.add("hidden");
+
+        console.log(exitData);
+        handler(exitData, this.name);
+      });
   }
 }
 export const walletManager = new WalletManager();

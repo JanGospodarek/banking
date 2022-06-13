@@ -40,7 +40,7 @@ export let state = {
       password: "zaq1@WSX1",
       movements: [],
       contacts: [],
-      totalBalance: 100,
+      totalBalance: 0,
     },
     {
       name: "Ela Nowak",
@@ -56,7 +56,7 @@ export let state = {
       ],
       movements: [],
       contacts: [],
-      totalBalance: 300,
+      totalBalance: 0,
     },
   ],
   wallets: [
@@ -92,6 +92,7 @@ export function logInUser(email, password) {
 
 // state.users.push;
 export function calculateTotalBalance() {
+  state.totalBalance = 0;
   state.wallets.forEach((wallet) => (state.totalBalance += wallet.balance));
 }
 
@@ -109,4 +110,20 @@ export function deleteWalletManage(name) {
     (wallet) => wallet.walletName === name
   );
   curUser.wallets.splice(index, 1);
+}
+
+export function transferWallet(data, name) {
+  const indexOfCurWallet = curUser.wallets.findIndex(
+    (wallet) => wallet.walletName === name
+  );
+  const indexOfDestWallet = curUser.wallets.findIndex(
+    (wallet) => wallet.walletName === data.destWalletName
+  );
+  curUser.wallets[indexOfCurWallet].balance =
+    curUser.wallets[indexOfCurWallet].balance - data.amount;
+  curUser.wallets[indexOfDestWallet].balance =
+    curUser.wallets[indexOfDestWallet].balance + data.amount;
+  // calculateTotalBalance();
+
+  console.log(state);
 }

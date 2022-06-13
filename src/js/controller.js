@@ -37,12 +37,15 @@ function controlLogIn(data) {
   console.log(model.state);
   init();
 }
-function controlTransferToWallet() {}
+function controlTransferToWallet(data, name) {
+  model.transferWallet(data, name);
+}
 function initHandlers() {
   newWallet.createWalletHandler(controlCreateWallet);
   walletManager.addHandlerDeleteWallet(controlDeleteWalletManage);
   logView.logInHandler(controlLogIn);
   walletManager.addHandlerOpenTransferModal();
+  walletManager.TransferToWallet(controlTransferToWallet);
 }
 initHandlers();
-console.log(curWalletName);
+// console.log(curWalletName);
