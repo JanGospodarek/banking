@@ -55,7 +55,18 @@ export let state = {
         },
       ],
       movements: [],
-      contacts: [],
+      contacts: [
+        {
+          name: "Stefciu",
+          desribtion: "lol",
+          email: "stefan@nowak.com",
+        },
+        {
+          name: "Wera",
+          describtion: "okwejnf",
+          email: "wera@nowak.com",
+        },
+      ],
       totalBalance: 0,
     },
   ],
@@ -116,22 +127,24 @@ export function transferWallet(data, name) {
   const indexOfCurWallet = curUser.wallets.findIndex(
     (wallet) => wallet.walletName === name
   );
+
   const indexOfDestWallet = curUser.wallets.findIndex(
     (wallet) => wallet.walletName === data.destWalletName
   );
+
   if (indexOfDestWallet === -1) {
     alert("Nie wykryto portfela!");
     return;
   }
+
   if (curUser.wallets[indexOfCurWallet].balance < data.amount) {
     alert("Za mało środków!");
     return;
   }
+
   curUser.wallets[indexOfCurWallet].balance =
     curUser.wallets[indexOfCurWallet].balance - data.amount;
   curUser.wallets[indexOfDestWallet].balance =
     curUser.wallets[indexOfDestWallet].balance + data.amount;
   // calculateTotalBalance();
-
-  console.log(state);
 }

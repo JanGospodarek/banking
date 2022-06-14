@@ -60,7 +60,6 @@ class WalletManager extends View {
     this.window.addEventListener("click", (e) => {
       const btnTransfer = e.target.closest(".btnTransferWallet");
       if (e.target !== btnTransfer) return;
-      console.log(this.transferWindow);
       this.transferWindow.classList.remove("hidden");
       this.name = e.target.closest(".walletOnManage").dataset.name;
     });
@@ -79,7 +78,6 @@ class WalletManager extends View {
         document.querySelector(".amount").value = "";
         this.transferWindow.classList.add("hidden");
 
-        console.log(exitData);
         handler(exitData, this.name);
       });
   }

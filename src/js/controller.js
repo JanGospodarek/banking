@@ -7,6 +7,10 @@ import { newWallet } from "./view/centerView.js";
 import { View } from "./view/View.js";
 import { logOrRegView, logView } from "./view/logView.js";
 import { walletManager } from "./view/walletManagerView.js";
+import { contactView } from "./view/contactView.js";
+
+//////
+
 function init() {
   model.calculateTotalBalance();
   balanceView.renderSimply(`${model.state.totalBalance} $`);
@@ -15,9 +19,12 @@ function init() {
   newWallet.render(model.state, false);
   history.render(model.state.movements);
   walletManager.render(model.state);
+  contactView.render(model.state);
+  contactView.renderBtn();
 }
+
 init();
-let curWalletName;
+
 function controlCreateWallet(data, newWalletBool = true) {
   if (newWalletBool) model.createNewWallet(data);
   newWallet.render(model.state);
@@ -26,17 +33,19 @@ function controlCreateWallet(data, newWalletBool = true) {
   walletManager.render(model.state);
   // console.log(model.state);
 }
+
 function controlDeleteWalletManage() {
   const name = walletManager.addHandlerDeleteWallet(undefined, false);
   model.deleteWalletManage(name);
   walletManager.render(model.state);
   controlCreateWallet(undefined, false);
 }
+
 function controlLogIn(data) {
   model.logInUser(data.email, data.password);
-  console.log(model.state);
   init();
 }
+
 function controlTransferToWallet(data, name) {
   model.transferWallet(data, name);
   newWallet.render(model.state);
@@ -44,6 +53,9 @@ function controlTransferToWallet(data, name) {
   newWallet.addHandlerShowWindow("btnNewWallet");
   walletManager.render(model.state);
 }
+
+function controlContacts() {}
+
 function initHandlers() {
   newWallet.createWalletHandler(controlCreateWallet);
   walletManager.addHandlerDeleteWallet(controlDeleteWalletManage);
@@ -51,5 +63,6 @@ function initHandlers() {
   walletManager.addHandlerOpenTransferModal();
   walletManager.TransferToWallet(controlTransferToWallet);
 }
+
 initHandlers();
 // console.log(curWalletName);
