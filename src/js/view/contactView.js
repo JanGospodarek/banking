@@ -12,6 +12,17 @@ class ContactView extends View {
     this.addHandlerHideWindow();
   }
 
+  addHandlerDeleteContact(handler, executeHandler = true) {
+    let name;
+    this.window.addEventListener("click", (e) => {
+      const btnDelete = e.target.closest(".btnDeleteContact");
+      if (e.target !== btnDelete) return;
+      if (executeHandler) handler();
+      name = e.target.closest(".contact");
+    });
+    return name;
+  }
+
   generateMarkup() {
     let markup = " ";
     this.data.contacts.forEach((contact) => {
@@ -37,14 +48,14 @@ class ContactView extends View {
     return markup;
   }
 
-  renderBtn() {
-    this.parentElement.insertAdjacentHTML(
-      "beforeend",
-      `
-      <button class="btnNewContact">
-          <img src="${iconPlus} alt="new wallet" width="35" />
-        </button>`
-    );
-  }
+  //   renderBtn() {
+  //     this.parentElement.insertAdjacentHTML(
+  //       "beforeend",
+  //       `
+  //       <button class="btnNewContact">
+  //           <img src="${iconPlus} alt="new wallet" width="35" />
+  //         </button>`
+  //     );
+  //   }
 }
 export const contactView = new ContactView();

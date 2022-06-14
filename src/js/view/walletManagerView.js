@@ -52,9 +52,9 @@ class WalletManager extends View {
       const btnDelete = e.target.closest(".btnDeleteWallet");
       if (e.target !== btnDelete) return;
       if (executeHandler) handler();
-      name = e.target.closest(".walletName");
+      name = e.target.closest(".walletOnManage").dataset.name;
+      handler(name);
     });
-    return name;
   }
   addHandlerOpenTransferModal() {
     this.window.addEventListener("click", (e) => {

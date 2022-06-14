@@ -117,9 +117,12 @@ export function createNewWallet(data) {
   });
 }
 export function deleteWalletManage(name) {
+  console.log(name);
   const index = curUser.wallets.findIndex(
     (wallet) => wallet.walletName === name
   );
+  console.log(index);
+  console.log(curUser.wallets);
   curUser.wallets.splice(index, 1);
 }
 
@@ -147,4 +150,11 @@ export function transferWallet(data, name) {
   curUser.wallets[indexOfDestWallet].balance =
     curUser.wallets[indexOfDestWallet].balance + data.amount;
   // calculateTotalBalance();
+}
+
+export function deleteContact(name) {
+  const index = curUser.contacts.findIndex(
+    (contact) => contact.walletName === name
+  );
+  curUser.wallets.splice(index, 1);
 }

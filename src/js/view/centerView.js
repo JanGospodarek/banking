@@ -30,7 +30,10 @@ class NewWallet extends View {
   window = document.querySelector(".newWallet");
   constructor() {
     super();
-    this.addHandlerShowWindow("btnNewWallet");
+    this.initHandlers("btnNewWallet");
+  }
+  initHandlers(name) {
+    this.addHandlerShowWindow(name);
     this.addHandlerHideWindow();
   }
   createWalletHandler(handler) {
@@ -68,17 +71,17 @@ class NewWallet extends View {
 
     return markup;
   }
-  renderBtn() {
-    this.parentElement.insertAdjacentHTML(
-      "beforeend",
-      `
-    <div class="btnContainer">
-              <button class="btnNewWallet btn" data-modal="newWallet">
-              <img src="${iconPlus}" alt="new wallet" width="37">
-              </button>
-            </div>`
-    );
-  }
+  // renderBtn() {
+  //   this.parentElement.insertAdjacentHTML(
+  //     "beforeend",
+  //     `
+  //   <div class="btnContainer">
+  //             <button class="btnNewWallet btn" data-modal="newWallet">
+  //             <img src="${iconPlus}" alt="new wallet" width="37">
+  //             </button>
+  //           </div>`
+  //   );
+  // }
 }
 export const balanceView = new BalanceView();
 export const nameView = new NameView();

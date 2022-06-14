@@ -20,7 +20,7 @@ function init() {
   history.render(model.state.movements);
   walletManager.render(model.state);
   contactView.render(model.state);
-  contactView.renderBtn();
+  // contactView.renderBtn();
 }
 
 init();
@@ -28,16 +28,28 @@ init();
 function controlCreateWallet(data, newWalletBool = true) {
   if (newWalletBool) model.createNewWallet(data);
   newWallet.render(model.state);
-  newWallet.renderBtn();
-  newWallet.addHandlerShowWindow("btnNewWallet");
+  // newWallet.renderBtn();
+
   walletManager.render(model.state);
   // console.log(model.state);
 }
 
-function controlDeleteWalletManage() {
-  const name = walletManager.addHandlerDeleteWallet(undefined, false);
+function controlDeleteWalletManage(name) {
+  console.log(name);
   model.deleteWalletManage(name);
+  newWallet.render(model.state);
+  // newWallet.renderBtn();
+  newWallet.initHandlers("btnNewWallet");
   walletManager.render(model.state);
+  controlCreateWallet(undefined, false);
+}
+
+function controlDeleteContact() {
+  // const name = contactView.addHandlerDeleteContact(undefined, false);
+  // model.deleteWalletManage(name);
+  contactView.render(model.state);
+  // contactView.renderBtn();
+
   controlCreateWallet(undefined, false);
 }
 
@@ -49,8 +61,7 @@ function controlLogIn(data) {
 function controlTransferToWallet(data, name) {
   model.transferWallet(data, name);
   newWallet.render(model.state);
-  newWallet.renderBtn();
-  newWallet.addHandlerShowWindow("btnNewWallet");
+  // newWallet.renderBtn();
   walletManager.render(model.state);
 }
 
