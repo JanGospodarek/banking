@@ -119,6 +119,14 @@ export function transferWallet(data, name) {
   const indexOfDestWallet = curUser.wallets.findIndex(
     (wallet) => wallet.walletName === data.destWalletName
   );
+  if (indexOfDestWallet === -1) {
+    alert("Nie wykryto portfela!");
+    return;
+  }
+  if (curUser.wallets[indexOfCurWallet].balance < data.amount) {
+    alert("Za mało środków!");
+    return;
+  }
   curUser.wallets[indexOfCurWallet].balance =
     curUser.wallets[indexOfCurWallet].balance - data.amount;
   curUser.wallets[indexOfDestWallet].balance =

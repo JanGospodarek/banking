@@ -39,6 +39,10 @@ function controlLogIn(data) {
 }
 function controlTransferToWallet(data, name) {
   model.transferWallet(data, name);
+  newWallet.render(model.state);
+  newWallet.renderBtn();
+  newWallet.addHandlerShowWindow("btnNewWallet");
+  walletManager.render(model.state);
 }
 function initHandlers() {
   newWallet.createWalletHandler(controlCreateWallet);

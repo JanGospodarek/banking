@@ -25,7 +25,7 @@ class WalletManager extends View {
               <p><span class="category">Describtion</span> ${
                 entry.describtion
               }</p>
-              <p><span class="category">Balance</span> ${entry.balance}</p>
+              <p><span class="category">Balance</span> ${entry.balance} $</p>
               <p><span class="category">History</span></p>
               <div class="history">
                 <ul class="historyListManager">
