@@ -54,18 +54,8 @@ class WalletManager extends View {
       if (e.target !== btnDelete) return;
       if (executeHandler) handler();
       name = e.target.closest(".walletOnManage").dataset.name;
-      debugger;
       handler(name);
     });
-    // let name;
-    // this.btnsDelete.forEach((btn) => {
-    //   console.log(btn);
-    //   btn.addEventListener("click", (e) => {
-    //     if (executeHandler) handler();
-    //     name = btn.closest(".walletOnManage").dataset.name;
-    //     handler(name);
-    //   });
-    // });
   }
   addHandlerOpenTransferModal() {
     this.window.addEventListener("click", (e) => {

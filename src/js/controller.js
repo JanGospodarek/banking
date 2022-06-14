@@ -35,7 +35,6 @@ function controlCreateWallet(data, newWalletBool = true) {
 }
 
 function controlDeleteWalletManage(name) {
-  console.log(name);
   model.deleteWalletManage(name);
   newWallet.render(model.state);
   // newWallet.renderBtn();
@@ -44,13 +43,11 @@ function controlDeleteWalletManage(name) {
   controlCreateWallet(undefined, false);
 }
 
-function controlDeleteContact() {
-  // const name = contactView.addHandlerDeleteContact(undefined, false);
-  // model.deleteWalletManage(name);
+function controlDeleteContact(name) {
+  model.deleteContact(name);
   contactView.render(model.state);
   // contactView.renderBtn();
-
-  controlCreateWallet(undefined, false);
+  // controlCreateWallet(undefined, false);
 }
 
 function controlLogIn(data) {
@@ -70,6 +67,7 @@ function controlContacts() {}
 function initHandlers() {
   newWallet.createWalletHandler(controlCreateWallet);
   walletManager.addHandlerDeleteWallet(controlDeleteWalletManage);
+  contactView.addHandlerDeleteContact(controlDeleteContact);
   logView.logInHandler(controlLogIn);
   walletManager.addHandlerOpenTransferModal();
   walletManager.TransferToWallet(controlTransferToWallet);

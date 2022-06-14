@@ -16,18 +16,18 @@ class ContactView extends View {
     let name;
     this.window.addEventListener("click", (e) => {
       const btnDelete = e.target.closest(".btnDeleteContact");
-      if (e.target !== btnDelete) return;
-      if (executeHandler) handler();
-      name = e.target.closest(".contact");
+      if (!btnDelete) return;
+      name = e.target.closest(".contact").dataset.name;
+      console.log(name);
+      if (executeHandler) handler(name);
     });
-    return name;
   }
 
   generateMarkup() {
     let markup = " ";
     this.data.contacts.forEach((contact) => {
       markup += `
-        <div class="contact">
+        <div class="contact" data-name="${contact.name}">
           <img
             src="${iconAc}"
             alt="contact"
