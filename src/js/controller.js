@@ -11,19 +11,7 @@ import { contactView } from "./view/contactView.js";
 import { newContactView } from "./view/contactView.js";
 //////
 
-function init() {
-  model.calculateTotalBalance();
-  balanceView.renderSimply(`${model.state.totalBalance} $`);
-  nameView.renderSimply(`Hi ${model.state.name}`);
-  mainWallet.render(model.state);
-  newWallet.render(model.state, false);
-  history.render(model.state.movements);
-  walletManager.render(model.state);
-  contactView.render(model.state);
-  // contactView.renderBtn();
-}
-
-init();
+// init();
 
 function controlCreateWallet(data, newWalletBool = true) {
   if (newWalletBool) model.createNewWallet(data);
@@ -49,10 +37,12 @@ function controlDeleteContact(name) {
   // contactView.renderBtn();
   // controlCreateWallet(undefined, false);
 }
+logView.logInHandler(controlLogIn);
 
 function controlLogIn(data) {
   model.logInUser(data.email, data.password);
   init();
+  initHandlers();
 }
 
 function controlTransferToWallet(data, name) {
@@ -68,14 +58,39 @@ function controlAddContacts(data) {
 }
 
 function initHandlers() {
+  newWallet.initHandlers("btnNewWallet");
+  contactView.initHandlers("btnNewContact");
+  contactView.initHandlers("btnContacts");
+  newContactView.initHandlers("btnNewContact");
+  walletManager.initHandlers("btnManageWallets");
+  ////
   newWallet.createWalletHandler(controlCreateWallet);
-  walletManager.addHandlerDeleteWallet(controlDeleteWalletManage);
-  contactView.addHandlerDeleteContact(controlDeleteContact);
-  logView.logInHandler(controlLogIn);
+  walletManager.addHandlerDeleteElement(
+    controlDeleteWalletManage,
+    true,
+    "btnDeleteWallet",
+    "walletOnManage"
+  );
+  contactView.addHandlerDeleteElement(
+    controlDeleteContact,
+    true,
+    "btnDeleteContact",
+    "contact"
+  );
   walletManager.addHandlerOpenTransferModal();
   walletManager.TransferToWallet(controlTransferToWallet);
   newContactView.createContactHandler(controlAddContacts);
 }
 
-initHandlers();
+function init() {
+  model.calculateTotalBalance();
+  balanceView.renderSimply(`${model.state.totalBalance} $`);
+  nameView.renderSimply(`Hi ${model.state.name}`);
+  mainWallet.render(model.state);
+  newWallet.render(model.state, false);
+  history.render(model.state.movements);
+  walletManager.render(model.state);
+  contactView.render(model.state);
+  // contactView.renderBtn();
+}
 // console.log(curWalletName);

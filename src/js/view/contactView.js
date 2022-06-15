@@ -7,26 +7,6 @@ class ContactView extends View {
   parentElement = document.querySelector(".contacts");
   formCreate = document.querySelector(".newContactForm");
 
-  constructor() {
-    super();
-    this.initHandlers("btnNewContact");
-    this.initHandlers("btnContacts");
-  }
-  initHandlers(name) {
-    this.addHandlerShowWindow(name);
-    this.addHandlerHideWindow();
-  }
-  addHandlerDeleteContact(handler, executeHandler = true) {
-    let name;
-    this.window.addEventListener("click", (e) => {
-      const btnDelete = e.target.closest(".btnDeleteContact");
-      if (!btnDelete) return;
-      name = e.target.closest(".contact").dataset.name;
-      console.log(name);
-      if (executeHandler) handler(name);
-    });
-  }
-
   generateMarkup() {
     let markup = " ";
     this.data.contacts.forEach((contact) => {
@@ -51,44 +31,26 @@ class ContactView extends View {
     });
     return markup;
   }
-
-  //   renderBtn() {
-  //     this.parentElement.insertAdjacentHTML(
-  //       "beforeend",
-  //       `
-  //       <button class="btnNewContact">
-  //           <img src="${iconPlus} alt="new wallet" width="35" />
-  //         </button>`
-  //     );
-  //   }
 }
 
 class NewContactView extends View {
   window = document.querySelector(".newContact");
   formCreate = document.querySelector(".newContactForm");
-  constructor() {
-    super();
-    this.initHandlers("btnNewContact");
-    // this.initHandlers("btnContacts");
-  }
-  initHandlers(name) {
-    this.addHandlerShowWindow(name);
-    this.addHandlerHideWindow();
-  }
+  name = document.querySelector(".nameContact");
+  describtion = document.querySelector(".describtionContact");
+  email = document.querySelector(".emailContact");
+
   createContactHandler(handler) {
     this.formCreate.addEventListener("submit", (e) => {
       e.preventDefault();
       const exitData = {
-        name: document.querySelector(".nameContact").value,
-        describtion: document.querySelector(".describtionContact").value,
-        email: document.querySelector(".emailContact").value,
+        name: this.name.value,
+        describtion: this.describtion.value,
+        email: this.email.value,
       };
-      document.querySelector(".nameContact").value = "";
-      document.querySelector(".describtionContact").value = "";
-      document.querySelector(".emailContact").value = "";
+      this.valueCleaner([this.name, this.describtion, this.email]);
       this.window.classList.add("hidden");
       handler(exitData);
-      // this.hideWindow();
     });
   }
 }

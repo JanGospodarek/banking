@@ -17,7 +17,9 @@
   transition: all 0.5s;
   z-index: 900;
 }
-
+/* .filter {
+  filter: blur(4px);
+} */
 .hidden {
   display: none;
   visibility: hidden;

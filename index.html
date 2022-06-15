@@ -18,6 +18,7 @@
     <script type="module" src="src/js/controller.js"></script>
   </head>
   <body>
+   
     <div class="overlay hidden"></div>
 
     <!--<div class="logging hidden">
@@ -62,7 +63,7 @@
     
     <div class="mainCont">
       <div class="header">
-        <p class="hiMsg">Hi, Jan Gospodarek</p>
+        <p class="hiMsg">Log in</p>
         <form class="logIn">
           <input class="emailLogIn" type="text" placeholder="example@domain.com">
           <input class="passwordLogIn" type="password" placeholder="min 8 characters">
@@ -75,7 +76,7 @@
           <img src="src/img/logout.png" alt="logout" width="55">
         </button>
       </div>
-      <div class="history ">
+      <div class="history filter">
         <ul class="historyList">
           <!--
           <li class="entry plus">
@@ -98,11 +99,11 @@
           </li>-->
         </ul>
       </div>
-      <div class="centerCont">
+      <div class="centerCont filter">
           <div class="top">
           <div class=" balanceCont">
             <p>Total balance</p>
-            <p class="balance">7400.00$</p>
+            <p class="balance"></p>
           </div>
           <div class="mainWallet">
             <p class="walletName">
@@ -143,7 +144,7 @@
           
         </div>
     </div>
-    <div class="rightCont">
+    <div class="rightCont filter">
       <ul class="functionsList">
         <li class="function"><button class="btnFunct btnQuickTransfer">Quick transfer</button> </li>
         <li class="function"><button class="btnFunct btnManageWallets">Wallet manager</button> </li>

@@ -1,25 +1,26 @@
 import { View } from "./View";
-// import { history } from "./leftView";
 import { renderHistoryEntry } from "../helper";
 import { renderDeleteBtn } from "../helper";
+
 class WalletManager extends View {
   btnOpen = document.querySelector(".btnManageWallets");
   btnsDelete = document.querySelectorAll(".btnDeleteWallet");
   window = document.querySelector(".manageWalletsWindow");
   parentElement = document.querySelector(".walletManager");
-  // btnTransfer = document.querySelectorAll(".btnTransferWallet");
   transferWindow = document.querySelector(".TransferToWallet");
-  // btnsDelete = document.querySelectorAll(".btnDeleteWallet");
+  transferForm = document.querySelector(".TransferToWalletForm");
+  destWallet = document.querySelector(".destNameWallet");
+  amount = document.querySelector(".amount");
   name;
+
   constructor() {
     super();
-    this.addHandlerShowWindow("btnManageWallets");
-    this.addHandlerHideWindow();
     //fix transfer window staying on screen
     this.overlay.addEventListener("click", () => {
       this.transferWindow.classList.add("hidden");
     });
   }
+
   generateMarkup() {
     let markup = "";
     this.data.wallets.forEach((entry, i) => {
@@ -51,16 +52,7 @@ class WalletManager extends View {
     });
     return markup;
   }
-  addHandlerDeleteWallet(handler, executeHandler = true) {
-    let name;
-    this.window.addEventListener("click", (e) => {
-      const btnDelete = e.target.closest(".btnDeleteWallet");
-      if (e.target !== btnDelete) return;
-      if (executeHandler) handler();
-      name = e.target.closest(".walletOnManage").dataset.name;
-      handler(name);
-    });
-  }
+
   addHandlerOpenTransferModal() {
     this.window.addEventListener("click", (e) => {
       const btnTransfer = e.target.closest(".btnTransferWallet");
@@ -71,20 +63,19 @@ class WalletManager extends View {
   }
 
   TransferToWallet(handler) {
-    document
-      .querySelector(".TransferToWalletForm")
-      .addEventListener("submit", (e) => {
-        e.preventDefault();
-        const exitData = {
-          destWalletName: document.querySelector(".destNameWallet").value,
-          amount: Number(document.querySelector(".amount").value),
-        };
-        document.querySelector(".destNameWallet").value = "";
-        document.querySelector(".amount").value = "";
-        this.transferWindow.classList.add("hidden");
+    this.transferForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const exitData = {
+        destWalletName: this.destWallet.value,
+        amount: Number(this.amount.value),
+      };
 
-        handler(exitData, this.name);
-      });
+      this.transferWindow.classList.add("hidden");
+
+      this.valueCleaner([this.destWallet, this.amount]);
+
+      handler(exitData, this.name);
+    });
   }
 }
 export const walletManager = new WalletManager();

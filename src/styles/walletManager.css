@@ -67,3 +67,8 @@
   height: 200px;
   background-color: lightgray;
 }
+.TransferToWalletForm > label,
+.TransferToWalletForm > input {
+  display: block;
+  margin: 5px;
+}

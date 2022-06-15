@@ -58,7 +58,7 @@ export let state = {
       contacts: [
         {
           name: "Stefciu",
-          desribtion: "lol",
+          describtion: "lol",
           email: "stefan@nowak.com",
         },
         {
@@ -120,8 +120,10 @@ export function deleteWalletManage(name) {
   const index = curUser.wallets.findIndex((wallet) => {
     return wallet.walletName === name;
   });
-
-  if (index !== -1) curUser.wallets.splice(index, 1);
+  if (index !== -1) {
+    curUser.wallets[0].balance += curUser.wallets[index].balance;
+    curUser.wallets.splice(index, 1);
+  }
 }
 
 export function transferWallet(data, name) {
@@ -158,7 +160,7 @@ export function deleteContact(name) {
 export function addContact(data) {
   curUser.contacts.push({
     name: data.name,
-    desribtion: data.describtion,
+    describtion: data.describtion,
     email: data.email,
   });
 }

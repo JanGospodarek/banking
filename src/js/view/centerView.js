@@ -1,12 +1,14 @@
 import { View } from "./View";
 import iconPlus from "../../img/iconPlus.png";
-console.log(iconPlus);
+
 class BalanceView extends View {
   parentElement = document.querySelector(".balance");
 }
+
 class NameView extends View {
   parentElement = document.querySelector(".hiMsg");
 }
+
 class MainWallet extends View {
   parentElement = document.querySelector(".mainWallet");
   generateMarkup() {
@@ -22,29 +24,23 @@ class MainWallet extends View {
     `;
   }
 }
+
 class NewWallet extends View {
   parentElement = document.querySelector(".wallets");
   btnCreate = document.querySelector(".btnCreateWallet");
   btnOpen = document.querySelector(".btnNewWallet");
   formCreate = document.querySelector(".newWalletForm");
   window = document.querySelector(".newWallet");
-  constructor() {
-    super();
-    this.initHandlers("btnNewWallet");
-  }
-  initHandlers(name) {
-    this.addHandlerShowWindow(name);
-    this.addHandlerHideWindow();
-  }
+  walletName = document.querySelector(".nameWallet");
+  walletDesc = document.querySelector(".walletDescribtion");
   createWalletHandler(handler) {
     this.formCreate.addEventListener("submit", (e) => {
       e.preventDefault();
       const exitData = {
-        walletName: document.querySelector(".nameWallet").value,
-        describtion: document.querySelector(".walletDescribtion").value,
+        walletName: this.walletName.value,
+        describtion: this.walletDesc.value,
       };
-      document.querySelector(".nameWallet").value = "";
-      document.querySelector(".walletDescribtion").value = "";
+      this.valueCleaner([this.walletName, this.walletDesc]);
       handler(exitData);
       this.hideWindow();
     });
@@ -83,6 +79,7 @@ class NewWallet extends View {
   //   );
   // }
 }
+
 export const balanceView = new BalanceView();
 export const nameView = new NameView();
 export const mainWallet = new MainWallet();

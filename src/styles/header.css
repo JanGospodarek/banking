@@ -27,6 +27,7 @@
   right: 20px;
 }
 .logIn {
+  z-index: 500;
   position: absolute;
   top: 40px;
   right: 200px;

@@ -11,6 +11,11 @@ export class View {
     this.parentElement.innerHTML = this.data;
   }
 
+  initHandlers(name) {
+    this.addHandlerShowWindow(name);
+    this.addHandlerHideWindow();
+  }
+
   addHandlerShowWindow(query) {
     this.btnOpen = document.querySelector(`.${query}`);
     this.btnOpen.addEventListener("click", this.showWindow.bind(this));
@@ -19,24 +24,39 @@ export class View {
   addHandlerHideWindow() {
     this.overlay.addEventListener("click", this.hideWindow.bind(this));
   }
-  //Funtion toggleWindow is cause of problems with multiple event listeners
-  // toggleWindow() {
-  //   this.overlay.classList.toggle("hidden");
-  //   this.window.classList.toggle("hidden");
-  // }
+
   showWindow() {
     this.overlay.classList.remove("hidden");
     this.window.classList.remove("hidden");
   }
+
   hideWindow() {
     this.overlay.classList.add("hidden");
     this.window.classList.add("hidden");
   }
+
   render(data, clear = true) {
     if (clear) this.parentElement.innerHTML = "";
     this.data = data;
     const markup = this.generateMarkup();
     this.parentElement.insertAdjacentHTML("afterbegin", markup);
+  }
+
+  valueCleaner(elements) {
+    elements.forEach((element) => {
+      element.value = "";
+    });
+  }
+
+  addHandlerDeleteElement(handler, executeHandler = true, btn, closest) {
+    let name;
+    this.window.addEventListener("click", (e) => {
+      const btnDelete = e.target.closest(`.${btn}`);
+      if (!btnDelete) return;
+      if (executeHandler) handler();
+      name = e.target.closest(`.${closest}`).dataset.name;
+      handler(name);
+    });
   }
 
   generateMarkup() {}
