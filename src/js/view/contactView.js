@@ -5,13 +5,17 @@ import iconDel from "../../img/trash.png";
 class ContactView extends View {
   window = document.querySelector(".contactsCont");
   parentElement = document.querySelector(".contacts");
+  formCreate = document.querySelector(".newContactForm");
 
   constructor() {
     super();
-    this.addHandlerShowWindow("btnContacts");
+    this.initHandlers("btnNewContact");
+    this.initHandlers("btnContacts");
+  }
+  initHandlers(name) {
+    this.addHandlerShowWindow(name);
     this.addHandlerHideWindow();
   }
-
   addHandlerDeleteContact(handler, executeHandler = true) {
     let name;
     this.window.addEventListener("click", (e) => {
@@ -58,4 +62,36 @@ class ContactView extends View {
   //     );
   //   }
 }
+
+class NewContactView extends View {
+  window = document.querySelector(".newContact");
+  formCreate = document.querySelector(".newContactForm");
+  constructor() {
+    super();
+    this.initHandlers("btnNewContact");
+    // this.initHandlers("btnContacts");
+  }
+  initHandlers(name) {
+    this.addHandlerShowWindow(name);
+    this.addHandlerHideWindow();
+  }
+  createContactHandler(handler) {
+    this.formCreate.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const exitData = {
+        name: document.querySelector(".nameContact").value,
+        describtion: document.querySelector(".describtionContact").value,
+        email: document.querySelector(".emailContact").value,
+      };
+      document.querySelector(".nameContact").value = "";
+      document.querySelector(".describtionContact").value = "";
+      document.querySelector(".emailContact").value = "";
+      this.window.classList.add("hidden");
+      handler(exitData);
+      // this.hideWindow();
+    });
+  }
+}
+
 export const contactView = new ContactView();
+export const newContactView = new NewContactView();

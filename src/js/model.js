@@ -154,3 +154,11 @@ export function deleteContact(name) {
   const index = curUser.contacts.findIndex((contact) => contact.name === name);
   if (index !== -1) curUser.contacts.splice(index, 1);
 }
+
+export function addContact(data) {
+  curUser.contacts.push({
+    name: data.name,
+    desribtion: data.describtion,
+    email: data.email,
+  });
+}

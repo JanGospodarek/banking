@@ -8,7 +8,7 @@ import { View } from "./view/View.js";
 import { logOrRegView, logView } from "./view/logView.js";
 import { walletManager } from "./view/walletManagerView.js";
 import { contactView } from "./view/contactView.js";
-
+import { newContactView } from "./view/contactView.js";
 //////
 
 function init() {
@@ -62,7 +62,10 @@ function controlTransferToWallet(data, name) {
   walletManager.render(model.state);
 }
 
-function controlContacts() {}
+function controlAddContacts(data) {
+  model.addContact(data);
+  contactView.render(model.state);
+}
 
 function initHandlers() {
   newWallet.createWalletHandler(controlCreateWallet);
@@ -71,6 +74,7 @@ function initHandlers() {
   logView.logInHandler(controlLogIn);
   walletManager.addHandlerOpenTransferModal();
   walletManager.TransferToWallet(controlTransferToWallet);
+  newContactView.createContactHandler(controlAddContacts);
 }
 
 initHandlers();

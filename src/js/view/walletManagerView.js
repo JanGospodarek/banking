@@ -15,6 +15,10 @@ class WalletManager extends View {
     super();
     this.addHandlerShowWindow("btnManageWallets");
     this.addHandlerHideWindow();
+    //fix transfer window staying on screen
+    this.overlay.addEventListener("click", () => {
+      this.transferWindow.classList.add("hidden");
+    });
   }
   generateMarkup() {
     let markup = "";

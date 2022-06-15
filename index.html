@@ -244,28 +244,21 @@
         <img src="src/img/iconPlus.png" alt="new wallet" width="35" />
       </button>
       <div class="contacts">
-        <!-- <div class="contact">
-          <img
-            src="src/img/contact.png"
-            alt="contact"
-            class="contactImg"
-            width="120"
-          />
-          <div class="contactInfo">
-            <p><span class="category">Name</span> Stefan</p>
-            <p><span class="category">Describtion</span> gosc tamtem</p>
-            <p><span class="category">Email</span> stefan@domain.com</p>
-          </div>
-          <button class="btnDeleteContact">
-            <img src="src/img/trash.png" alt="" width="25" />
-          </button>
-        </div> -->
-
-        
       </div>
     </div>
     
-  
+    <div class="newContact modal hidden">
+      <h2>New contact</h2>
+      <form class="newContactForm">
+      <label>Name</label>
+      <input type="text" class="nameContact" required>
+      <label>Describtion</label>
+      <input type="text" class="describtionContact" >
+      <label>Email</label>
+      <input type="text" class="emailContact" required>
+      <input type="submit" value="Add" class="btnCreateContact">
+    </form>
+    </div>
 
   <div class="newWallet modal hidden">
     <h2>Create new wallet</h2>
@@ -273,10 +266,11 @@
       <label>Wallet name</label>
       <input type="text" class="nameWallet" required>
       <label>Describtion</label>
-      <input type="text" class="walletDescribtion" required>
+      <input type="text" class="walletDescribtion" >
       <input type="submit" value="Create" class="btnCreateWallet">
     </form>
   </div>
+
   <div class="TransferToWallet modal hidden">
     <h2>Transfer to wallet</h2>
     <form class="TransferToWalletForm" >
@@ -287,5 +281,7 @@
       <input type="submit" value="Transfer" class="btnCreateWallet">
     </form>
   </div>
+
+ 
 </body>
 </html>
