@@ -1,5 +1,30 @@
 import { View } from "./View";
 import * as model from "../model.js";
+import * as markups from "./markups.js";
+
+class LogView extends View {
+  form = document.querySelector(".logIn");
+  btnSend = document.querySelector(".logSubmit");
+  email = document.querySelector(".emailLogIn");
+  password = document.querySelector(".passwordLogIn");
+  logInHandler(handler) {
+    this.form.addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      const exitData = {
+        email: this.email.value,
+        password: this.password.value,
+      };
+      this.valueCleaner([this.email, this.password]);
+
+      handler(exitData);
+    });
+  }
+}
+
+export const logView = new LogView();
+
+//////////////////////////////////
 // import * as model from "./model.js";
 // class LogOrRegView extends View {
 //   window = document.querySelector(".logging");
@@ -19,27 +44,3 @@ import * as model from "../model.js";
 //     });
 //   }
 // }
-
-class LogView extends View {
-  form = document.querySelector(".logIn");
-  btnSend = document.querySelector(".logSubmit");
-  // window = document.querySelector(".logWindowBig");
-  logInHandler(handler) {
-    this.form.addEventListener("submit", (e) => {
-      e.preventDefault();
-
-      const email = document.querySelector(".emailLogIn");
-      const password = document.querySelector(".passwordLogIn");
-      const exitData = {
-        email: email.value,
-        password: password.value,
-      };
-      email.value = "";
-      password.value = "";
-      handler(exitData);
-    });
-  }
-}
-// class RegisterView extends View {}
-// export const logOrRegView = new LogOrRegView();
-export const logView = new LogView();

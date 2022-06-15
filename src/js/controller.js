@@ -10,22 +10,17 @@ import { walletManager } from "./view/walletManagerView.js";
 import { contactView } from "./view/contactView.js";
 import { newContactView } from "./view/contactView.js";
 //////
-
-// init();
+logView.logInHandler(controlLogIn);
 
 function controlCreateWallet(data, newWalletBool = true) {
   if (newWalletBool) model.createNewWallet(data);
   newWallet.render(model.state);
-  // newWallet.renderBtn();
-
   walletManager.render(model.state);
-  // console.log(model.state);
 }
 
 function controlDeleteWalletManage(name) {
   model.deleteWalletManage(name);
   newWallet.render(model.state);
-  // newWallet.renderBtn();
   newWallet.initHandlers("btnNewWallet");
   walletManager.render(model.state);
   controlCreateWallet(undefined, false);
@@ -34,10 +29,7 @@ function controlDeleteWalletManage(name) {
 function controlDeleteContact(name) {
   model.deleteContact(name);
   contactView.render(model.state);
-  // contactView.renderBtn();
-  // controlCreateWallet(undefined, false);
 }
-logView.logInHandler(controlLogIn);
 
 function controlLogIn(data) {
   model.logInUser(data.email, data.password);
@@ -48,7 +40,6 @@ function controlLogIn(data) {
 function controlTransferToWallet(data, name) {
   model.transferWallet(data, name);
   newWallet.render(model.state);
-  // newWallet.renderBtn();
   walletManager.render(model.state);
 }
 
@@ -63,21 +54,23 @@ function initHandlers() {
   contactView.initHandlers("btnContacts");
   newContactView.initHandlers("btnNewContact");
   walletManager.initHandlers("btnManageWallets");
-  ////
-  newWallet.createWalletHandler(controlCreateWallet);
+
   walletManager.addHandlerDeleteElement(
     controlDeleteWalletManage,
     true,
     "btnDeleteWallet",
     "walletOnManage"
   );
+
   contactView.addHandlerDeleteElement(
     controlDeleteContact,
     true,
     "btnDeleteContact",
     "contact"
   );
+
   walletManager.addHandlerOpenTransferModal();
+  newWallet.createWalletHandler(controlCreateWallet);
   walletManager.TransferToWallet(controlTransferToWallet);
   newContactView.createContactHandler(controlAddContacts);
 }
@@ -91,6 +84,4 @@ function init() {
   history.render(model.state.movements);
   walletManager.render(model.state);
   contactView.render(model.state);
-  // contactView.renderBtn();
 }
-// console.log(curWalletName);

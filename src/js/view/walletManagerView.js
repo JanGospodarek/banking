@@ -1,6 +1,6 @@
 import { View } from "./View";
-import { renderHistoryEntry } from "../helper";
-import { renderDeleteBtn } from "../helper";
+
+import * as markups from "./markups.js";
 
 class WalletManager extends View {
   btnOpen = document.querySelector(".btnManageWallets");
@@ -23,32 +23,8 @@ class WalletManager extends View {
 
   generateMarkup() {
     let markup = "";
-    this.data.wallets.forEach((entry, i) => {
-      markup += `
-    
-            <div class="walletOnManage" data-name="${entry.walletName}">
-              <p class="walletName">${entry.walletName}</p>
-              <p><span class="category">Describtion</span> ${
-                entry.describtion
-              }</p>
-              <p><span class="category">Balance</span> ${entry.balance} $</p>
-              <p><span class="category">History</span></p>
-              <div class="history">
-                <ul class="historyListManager">
-                ${renderHistoryEntry(entry)}
-                 
-                </ul>
-              </div>
-              <div class="btnActionCont ">
-                <button class="btnWalletManager btnTransferWallet">
-                  Transfer to other wallet
-                </button>
-                ${renderDeleteBtn(entry)}
-               
-              </div>
-            </div>
-     
-          `;
+    this.data.wallets.forEach((entry) => {
+      markup += markups.walletManagerMarkup(entry);
     });
     return markup;
   }

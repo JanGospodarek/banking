@@ -48,6 +48,14 @@ export class View {
     });
   }
 
+  /**
+   *
+   * @param {function} handler  function witch is executed by handler
+   * @param {boolean} executeHandler
+   * @param {string} btn  name of btn that handler is being attached to
+   * @param {string} closest   name of parent element from which function takes dataset value
+   */
+
   addHandlerDeleteElement(handler, executeHandler = true, btn, closest) {
     let name;
     this.window.addEventListener("click", (e) => {

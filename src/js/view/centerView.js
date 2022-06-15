@@ -1,5 +1,6 @@
 import { View } from "./View";
 import iconPlus from "../../img/iconPlus.png";
+import * as markups from "./markups.js";
 
 class BalanceView extends View {
   parentElement = document.querySelector(".balance");
@@ -12,16 +13,8 @@ class NameView extends View {
 class MainWallet extends View {
   parentElement = document.querySelector(".mainWallet");
   generateMarkup() {
-    console.log(this.data);
-    return `
-    <p class="walletName">
-    <span class="boldWalletName">${this.data.wallets[0].walletName}</span> 
-  </p>
-  <p><span class="category">Balance</span> ${this.data.wallets[0].balance} $</p>
-  <p>
-    <span class="category">Describtion</span> ${this.data.wallets[0].describtion}
-  </p>
-    `;
+    const markup = markups.mainWalletMarkup.call(this);
+    return markup;
   }
 }
 
@@ -33,6 +26,7 @@ class NewWallet extends View {
   window = document.querySelector(".newWallet");
   walletName = document.querySelector(".nameWallet");
   walletDesc = document.querySelector(".walletDescribtion");
+
   createWalletHandler(handler) {
     this.formCreate.addEventListener("submit", (e) => {
       e.preventDefault();
@@ -50,37 +44,27 @@ class NewWallet extends View {
     let markup = "";
     this.data.wallets.forEach((entry, i) => {
       if (i === 0) return markup;
-      markup += `
-      <div class="wallet">
-                <p class="walletName">
-                  <span class="category">Wallet name</span> ${entry.walletName}
-                </p>
-                <p><span class="category">Balance</span> ${entry.balance} $</p>
-                <p>
-                  <span class="category">Describtion</span> ${entry.describtion}
-                </p>
-                <p>
-                
-               </div>
-               `;
+      markup += markups.newWalletMarkup(entry);
     });
 
     return markup;
   }
-  // renderBtn() {
-  //   this.parentElement.insertAdjacentHTML(
-  //     "beforeend",
-  //     `
-  //   <div class="btnContainer">
-  //             <button class="btnNewWallet btn" data-modal="newWallet">
-  //             <img src="${iconPlus}" alt="new wallet" width="37">
-  //             </button>
-  //           </div>`
-  //   );
-  // }
 }
 
 export const balanceView = new BalanceView();
 export const nameView = new NameView();
 export const mainWallet = new MainWallet();
 export const newWallet = new NewWallet();
+
+////////////////////////////
+// renderBtn() {
+//   this.parentElement.insertAdjacentHTML(
+//     "beforeend",
+//     `
+//   <div class="btnContainer">
+//             <button class="btnNewWallet btn" data-modal="newWallet">
+//             <img src="${iconPlus}" alt="new wallet" width="37">
+//             </button>
+//           </div>`
+//   );
+// }
