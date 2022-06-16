@@ -31,6 +31,7 @@ function controlDeleteWalletManage(name) {
 
 function controlDeleteContact(name) {
   model.deleteContact(name);
+  quickTransferRenderContacts.render(model.state);
   contactView.render(model.state);
 }
 
@@ -48,7 +49,14 @@ function controlTransferToWallet(data, name) {
 
 function controlAddContacts(data) {
   model.addContact(data);
+  quickTransferRenderContacts.render(model.state);
+
   contactView.render(model.state);
+}
+
+function controlTransferToAccount(data) {
+  model.transferAccount(data);
+  init();
 }
 
 function initHandlers() {
@@ -77,6 +85,7 @@ function initHandlers() {
   newWallet.createWalletHandler(controlCreateWallet);
   walletManager.TransferToWallet(controlTransferToWallet);
   newContactView.createContactHandler(controlAddContacts);
+  quickTransfer.TransferToAccount(controlTransferToAccount);
 }
 
 function init() {

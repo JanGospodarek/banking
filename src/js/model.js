@@ -2,6 +2,7 @@ let userIndex;
 let curUser;
 export function logInUser(email, password) {
   userIndex = state.users.findIndex((user) => user.email === email);
+  if (userIndex === -1) return;
   if (state.users[userIndex].password !== password) return;
 
   curUser = state.users[userIndex];
@@ -64,7 +65,8 @@ export function transferWallet(data, name) {
 
 export function deleteContact(name) {
   const index = curUser.contacts.findIndex((contact) => contact.name === name);
-  if (index !== -1) curUser.contacts.splice(index, 1);
+  if (index === -1) return;
+  curUser.contacts.splice(index, 1);
 }
 
 export function addContact(data) {
@@ -75,15 +77,69 @@ export function addContact(data) {
   });
 }
 
+// function findElementHelper(elementToLookIn, elementToLookFor, condition) {
+//   const index = elementToLookIn.findIndex((el,i) => {
+//     return elementToLookIn[i].elementToLookFor === condition;
+//   });
+//   if (index === -1) return;
+//   return index;
+// }
+
+export function transferAccount(data) {
+  console.log(data);
+
+  const index = curUser.contacts.findIndex(
+    (contact) => contact.name === data.name
+  );
+  if (index === -1) return;
+
+  // const index = findElementHelper(
+  //   curUser.contacts,
+  //   name,
+  //   data.name
+  // );
+
+  const userIndex = state.users.findIndex(
+    (user) => user.email === curUser.contacts[index].email
+  );
+  if (userIndex === -1) return;
+
+  const walletIndex = curUser.wallets.findIndex(
+    (wallet) => wallet.walletName === data.fromWallet
+  );
+
+  if (curUser.wallets[walletIndex].balance < data.amount) return;
+  curUser.wallets[walletIndex].balance -= data.amount;
+  state.users[userIndex].wallets[0].balance += data.amount;
+}
 ///STATE with example users data
 export let state = {
   users: [
     {
-      name: "Robert Kowalski",
-      email: "robert@kowalski.com",
-      password: "zaq1@WSX1",
+      name: "Robert",
+      email: "rob@nowak.com",
+      password: "zaq1@WSX",
+      wallets: [
+        {
+          walletName: "Main wallet",
+          balance: 1000,
+          describtion: "Default wallet",
+          movements: [],
+        },
+      ],
       movements: [],
-      contacts: [],
+      contacts: [
+        {
+          name: "ela",
+          describtion: "elunia",
+          email: "ela@nowak.com",
+        },
+        {
+          name: "Wera",
+          describtion: "okwejnf",
+          email: "wera@nowak.com",
+        },
+      ],
       totalBalance: 0,
     },
     {
@@ -101,9 +157,9 @@ export let state = {
       movements: [],
       contacts: [
         {
-          name: "Stefciu",
+          name: "Robert",
           describtion: "lol",
-          email: "stefan@nowak.com",
+          email: "rob@nowak.com",
         },
         {
           name: "Wera",
