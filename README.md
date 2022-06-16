@@ -1,7 +1,9 @@
 # banking
 complex banking app with multiple wallets mechanism, multiple users and many other features. MVC and OOP, still in development
 Propably most complex and difficult project that I created.
+
 Run for example with parcel
+
 Steps:
 1. Download repo
 2. Go to project folder
