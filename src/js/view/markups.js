@@ -88,3 +88,9 @@ export function walletManagerMarkup(entry) {
 
   `;
 }
+
+export function quickTransferRenderMarkup(entry, ifWallet = true) {
+  return `
+  <option value="${ifWallet ? entry.walletName : entry.name}"></option>
+  `;
+}

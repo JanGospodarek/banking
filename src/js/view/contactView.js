@@ -1,5 +1,4 @@
 import { View } from "./View";
-
 import * as markups from "./markups.js";
 
 class ContactView extends View {

@@ -4,11 +4,13 @@ import { nameView } from "./view/centerView.js";
 import { mainWallet } from "./view/centerView.js";
 import { history } from "./view/leftView.js";
 import { newWallet } from "./view/centerView.js";
-import { View } from "./view/View.js";
 import { logOrRegView, logView } from "./view/logView.js";
 import { walletManager } from "./view/walletManagerView.js";
 import { contactView } from "./view/contactView.js";
 import { newContactView } from "./view/contactView.js";
+import { quickTransfer } from "./view/quickTransferView.js";
+import { quickTransferRenderFromWallet } from "./view/quickTransferView.js";
+import { quickTransferRenderContacts } from "./view/quickTransferView.js";
 //////
 logView.logInHandler(controlLogIn);
 
@@ -16,6 +18,7 @@ function controlCreateWallet(data, newWalletBool = true) {
   if (newWalletBool) model.createNewWallet(data);
   newWallet.render(model.state);
   walletManager.render(model.state);
+  quickTransferRenderFromWallet.render(model.state);
 }
 
 function controlDeleteWalletManage(name) {
@@ -33,8 +36,8 @@ function controlDeleteContact(name) {
 
 function controlLogIn(data) {
   model.logInUser(data.email, data.password);
-  init();
   initHandlers();
+  init();
 }
 
 function controlTransferToWallet(data, name) {
@@ -54,6 +57,7 @@ function initHandlers() {
   contactView.initHandlers("btnContacts");
   newContactView.initHandlers("btnNewContact");
   walletManager.initHandlers("btnManageWallets");
+  quickTransfer.initHandlers("btnQuickTransfer");
 
   walletManager.addHandlerDeleteElement(
     controlDeleteWalletManage,
@@ -84,4 +88,6 @@ function init() {
   history.render(model.state.movements);
   walletManager.render(model.state);
   contactView.render(model.state);
+  quickTransferRenderFromWallet.render(model.state);
+  quickTransferRenderContacts.render(model.state);
 }
